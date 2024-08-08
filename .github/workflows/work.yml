@@ -5,3 +5,5 @@ jobs:
   my-job:
     name: My Job
     runs-on: ubuntu-latest
+    steps:
+      - name: build

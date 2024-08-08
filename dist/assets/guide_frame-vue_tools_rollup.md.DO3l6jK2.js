@@ -1,0 +1,31 @@
+import{_ as s,c as i,o as a,a3 as n}from"./chunks/framework.B0izzCxm.js";const c=JSON.parse('{"title":"Rollup","description":"","frontmatter":{},"headers":[],"relativePath":"guide/frame-vue/tools/rollup.md","filePath":"guide/frame-vue/tools/rollup.md","lastUpdated":1719562339000}'),l={name:"guide/frame-vue/tools/rollup.md"},p=n(`<h1 id="rollup" tabindex="-1">Rollup <a class="header-anchor" href="#rollup" aria-label="Permalink to &quot;Rollup&quot;">​</a></h1><ul><li>Rollup 是一个 JavaScript 模块打包工具，可以将多个小的代码片段编译为完整的库和应用。</li><li>默认情况下，Rollup 会使用 Node 原生的模块机制来加载你的 Rollup 配置。</li></ul><h2 id="创建-rollup-项目" tabindex="-1">创建 Rollup 项目 <a class="header-anchor" href="#创建-rollup-项目" aria-label="Permalink to &quot;创建 Rollup 项目&quot;">​</a></h2><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 初始化项目</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> init</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 安装</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> rollup</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 引入babel，将es6转译成es5</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @babel/core</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @babel/node</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @babel/preset-env</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @rollup/plugin-babel</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 将引入的第三方组件模块的源码和当前库的代码进行混合打包</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> rollup-plugin-node-resolve</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 将 rollup.js 设置支持 commonjs 模块</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> rollup-plugin-commonjs</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 支持json文件的打包</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @rollup/plugin-json</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 将代码进行压缩打包</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> rollup-plugin-terser</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># vue2</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> vue-template-compiler</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># vue3</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @vue/compiler-sfc</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># vue2对应5.0.0版本，vue3对应6.0.0版本</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> rollup-plugin-vue</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 支持预编译，支持scss</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> rollup-plugin-postcss</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> sass</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span></span></code></pre></div>`,4),h=[p];function t(e,k,F,r,d,o){return a(),i("div",null,h)}const C=s(l,[["render",t]]);export{c as __pageData,C as default};
